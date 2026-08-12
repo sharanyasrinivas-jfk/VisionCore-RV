@@ -64,29 +64,45 @@ for streaming results (e.g. an AI accelerator read) out to a host PC.
 ## Structure
 ```
 VisionCore-RV/
-├── rtl/
-│   ├── cla_adder.v            32-bit carry look-ahead adder
-│   ├── alu.v                  ALU (add/sub/logic/shift/compare)
-│   ├── register_file.v        32x32 register file
-│   ├── decoder.v               instruction + immediate decode
-│   ├── control_unit.v          opcode -> control signal decode
-│   ├── branch_unit.v           branch condition evaluation
-│   ├── ai_accelerator.v        MAC-based custom accelerator
-│   ├── instruction_memory.v    ROM, loaded via $readmemh
-│   ├── data_memory.v           word-addressed data RAM
-│   ├── uart_tx.v                standalone UART transmitter
-│   ├── visioncore_single.v     single-cycle top level
-│   ├── pipeline_regs.v         IF/ID, ID/EX, EX/MEM, MEM/WB regs
-│   ├── hazard_unit.v            load-use stall detection
-│   ├── forwarding_unit.v        EX-stage operand forwarding
-│   └── visioncore_pipeline.v   5-stage pipeline top level
+│
 ├── asm/
-│   ├── assembler.py            assembly -> hex machine code
-│   └── test_program.asm        exercises every instruction class
+│   ├── assembler.py
+│   └── test_program.asm
+│
+├── docs/
+│   ├── AI Accelerator Datapath Diagram.png
+│   ├── CPU Pipeline Branch Flush Diagram.png
+│   ├── CPU Pipeline Forwarding Unit Diagram.png
+│   ├── FIVE STAGE PIPELINE DATAPATH.png
+│   ├── Load–Use Hazard Stall Diagram.png
+│   ├── Processor Core Verification Flowchart.png
+│   ├── Single-Cycle RISC-V Datapath Diagram.png
+│   └── VisionCore-RV Architecture Overview.png
+│
+├── rtl/
+│   ├── cla_adder.v
+│   ├── alu.v
+│   ├── register_file.v
+│   ├── decoder.v
+│   ├── control_unit.v
+│   ├── branch_unit.v
+│   ├── ai_accelerator.v
+│   ├── instruction_memory.v
+│   ├── data_memory.v
+│   ├── uart_tx.v
+│   ├── visioncore_single.v
+│   ├── pipeline_regs.v
+│   ├── hazard_unit.v
+│   ├── forwarding_unit.v
+│   └── visioncore_pipeline.v
+│
 ├── sim/
-│   ├── tb_single.v              single-cycle testbench
-│   └── tb_pipeline.v            pipeline testbench
-└── Makefile
+│   ├── tb_single.v
+│   └── tb_pipeline.v
+│
+├── Makefile
+├── README.md
+└── .gitignore
 ```
 
 ## Running it
